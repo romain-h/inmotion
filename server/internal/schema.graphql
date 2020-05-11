@@ -1,0 +1,82 @@
+type Video {
+  id: ID!
+  title: String!
+  src: String!
+  transcript: Transcript
+  editions: [Edition]
+  isTranscriptReady: Boolean!
+}
+
+type MonologueElement {
+  type: String!
+  value: String!
+  ts: Float
+  tsEnd: Float
+}
+
+type Monologue {
+  speaker: Int
+  elements: [MonologueElement]
+}
+
+type Transcript {
+  monologues: [Monologue]
+}
+
+type Edition {
+  id: ID!
+  video: Video!
+  title: String!
+  clips: [Clip]!
+  previewURL: String
+  exportURL: String
+}
+
+type Clip {
+  id: ID!
+  order: Int!
+  ts: Float
+  tsEnd: Float
+  edition: Edition
+  src: String
+  thumbnail: String
+}
+
+type Preview {
+  loading: Boolean!
+  url: String
+}
+
+type Query {
+  videos: [Video!]!
+  video(id: String!): Video!
+  edition(id: String!): Edition!
+}
+
+input EditionInput {
+  vid: ID!
+}
+
+input ClipInput {
+  eid: ID!
+  ts: Float
+  tsEnd: Float
+}
+
+type GeneratedUploader {
+  id: String!
+  url: String!
+}
+
+type Mutation {
+  updateVideoTitle(id: ID!, title: String!): Video!
+  createClip(input: ClipInput): Clip!
+  createEdition(input: EditionInput): Edition!
+  reorderClip(eid: ID!, id: ID!, newIndex: Int!): [Clip!]!
+  removeClip(eid: ID!, id: String): Boolean!
+  generateVideoUploadURL(name: String!, type: String!, size: Int!): GeneratedUploader!
+}
+
+type Subscription {
+  previewUpdate(eid: ID!): Preview!
+}

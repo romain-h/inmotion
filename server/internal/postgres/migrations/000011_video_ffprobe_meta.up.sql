@@ -1,0 +1,3 @@
+ALTER TABLE videos ADD COLUMN IF NOT EXISTS meta jsonb;
+ALTER TABLE videos ADD COLUMN IF NOT EXISTS audio_sample_rate BIGINT;
+ALTER TABLE videos ADD COLUMN IF NOT EXISTS audio_channel_layout TEXT;

@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS videos (
+  id UUID PRIMARY KEY,
+  title TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS editions (
+  id UUID PRIMARY KEY,
+  video_id UUID REFERENCES "videos" (id)
+);
+
+CREATE TABLE IF NOT EXISTS clips (
+  id UUID PRIMARY KEY,
+  ts FLOAT8 NOT NULL,
+  ts_end FLOAT8 NOT NULL,
+  edition_id UUID REFERENCES "editions" (id)
+);

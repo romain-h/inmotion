@@ -1,0 +1,5 @@
+.now
+.env
+server/static/tmp
+
+volumes/

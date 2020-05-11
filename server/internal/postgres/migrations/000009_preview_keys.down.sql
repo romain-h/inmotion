@@ -1,0 +1,2 @@
+ALTER TABLE clips DROP COLUMN IF EXISTS has_previews;
+ALTER TABLE editions DROP COLUMN IF EXISTS preview_key;

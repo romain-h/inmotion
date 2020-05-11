@@ -1,0 +1,3 @@
+./video-server
+./volume-static/tmp/*
+!./volume-static/tmp/.gitkeep

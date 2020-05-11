@@ -1,0 +1,1 @@
+ALTER TABLE clips ADD COLUMN IF NOT EXISTS montage_order INT;

@@ -1,0 +1,1 @@
+ALTER TABLE editions DROP COLUMN IF EXISTS title;

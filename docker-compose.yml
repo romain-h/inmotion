@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=docker
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./.local/inmotion-nginx.conf:/etc/nginx/conf.d/inmotion.conf
+      - ./.local/certs:/etc/nginx/certs
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+    environment:
+      # - USE_SSL=1 -- TODO Add custom ssl here
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio123
+    volumes:
+      - ./volumes/minio:/data
+    command: minio server /data
