@@ -48,12 +48,12 @@ drive. The recommended way to have an active storage is to use AWS S3.
 
 FFmpeg relies a lot on files to perform manipulations. Since I used FFmpeg CLI,
 [rather than a binding](#go-ffmpeg-binding), I came up with an elegant solution
-to pipe in and out of S3 [as follows](/internal/storage/storage.go#L197-L226).
+to pipe in and out of S3 [as follows](/server/internal/storage/storage.go#L197-L226).
 A FFmpeg command can then use a video on S3 as input and output directly on
 another.
 
 Unfortunately, some FFmpeg commands still rely exclusively on files and [a full
-download](/internal/storage/storage.go#L169-L192) in a temporary folder is
+download](/server/internal/storage/storage.go#L169-L192) in a temporary folder is
 required. This limitation does not guarantee reliability in case you exceed the
 temporary storage available on a dyno.
 
@@ -136,7 +136,7 @@ do this. FFmpeg implements this feature with a filtergraph which is intimidating
   Language (DSL) [as
   a text](http://ffmpeg.org/ffmpeg-filters.html#Filtergraph-syntax-1). Using
   a pure text DSL like this makes it easy to use anywhere [with strings
-  interpolation](/internal/dvr/clips.go#L90-L98). This DSL makes a good example
+  interpolation](/server/internal/dvr/clips.go#L90-L98). This DSL makes a good example
   to evaluate when applying streams manipulations in other contexts.
 
 ### Minio vs. LocalStack S3
@@ -159,7 +159,7 @@ SDK and benefit from the local file system.
 
 For now, only MP4 videos (streamable) are supported by InMotion. One way to
 handle non-streamable content is to [re-encode the
-video](/internal/dvr/pipeline.go#L11-L28) once uploaded to move the moov atom at
+video](/server/internal/dvr/pipeline.go#L11-L28) once uploaded to move the moov atom at
 the beginning of the file.
 
 ## Deployment
