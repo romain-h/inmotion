@@ -42,7 +42,7 @@
     "styletron-react": "^5.0.1",
     "subscriptions-transport-ws": "^0.9.16",
     "video.js": "^7.7.5",
-    "ws": "^7.2.3"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.13.3",
