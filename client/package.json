@@ -41,7 +41,7 @@
     "styletron-engine-atomic": "^1.1.2",
     "styletron-react": "^5.0.1",
     "subscriptions-transport-ws": "^0.9.16",
-    "video.js": "^7.7.5",
+    "video.js": "^7.20.3",
     "ws": "^7.2.3"
   },
   "devDependencies": {
