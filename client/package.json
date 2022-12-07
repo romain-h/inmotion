@@ -45,7 +45,7 @@
     "ws": "^7.2.3"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.13.3",
+    "@graphql-codegen/cli": "^1.21.8",
     "@graphql-codegen/typescript": "^1.13.3",
     "@types/node": "^13.13.0",
     "@types/react": "^16.9.34",
